@@ -1,0 +1,17 @@
+# Mengaktifkan mesin rewrite URL
+RewriteEngine On
+
+# ----- Aturan untuk redirect index.html ke root (domain utama) -----
+# Jika permintaan adalah untuk file "index.html"
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+# Arahkan secara permanen (301) ke "/"
+RewriteRule ^index\.html$ / [R=301,L]
+
+
+# ----- Aturan untuk menghilangkan ekstensi .html dari URL -----
+# Jika file yang diminta tidak ada secara langsung
+RewriteCond %{REQUEST_FILENAME} !-f
+# Dan jika direktori yang diminta tidak ada
+RewriteCond %{REQUEST_FILENAME} !-d
+# Ambil permintaan (misal: "/kamus") dan coba cari file "/kamus.html" di server
+RewriteRule ^([^.]+)$ $1.html [NC,L]
