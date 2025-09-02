@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="Assets/logo_aja_custom_rumah_digicraft.png" />
+    <title>Konsultasi Gratis — Rumah Digicraft</title>
+    <meta
+      name="description"
+      content="Jadwalkan konsultasi gratis dengan Rumah Digicraft. Bahas kebutuhan website, aplikasi Android/iOS, atau desain UI/UX untuk Startup & UMKM."
+    />
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { brand: { blue: "#0D3B66", cream: "#FAF0CA" } },
+            boxShadow: { smooth: "0 10px 30px rgba(13,59,102,0.12)" },
+          },
+        },
+      };
+    </script>
+    <style>
+      html,
+      body {
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+          "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .input {
+        width: 100%;
+        border-radius: 0.5rem;
+        border: 1px solid rgba(13, 59, 102, 0.2);
+        background-color: white;
+        padding: 0.625rem 1rem;
+        outline: none;
+      }
+      .input:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(13, 59, 102, 0.2);
+      }
+      .label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #0d3b66;
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 9999px;
+        border: 1px solid rgba(13, 59, 102, 0.2);
+        background-color: white;
+        padding: 0.25rem 0.75rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: #0d3b66;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        font-weight: 600;
+      }
+      .btn-primary {
+        background-color: #0d3b66;
+        color: #faf0ca;
+        box-shadow: 0 10px 30px rgba(13, 59, 102, 0.12);
+      }
+      .btn-primary:hover {
+        opacity: 0.95;
+      }
+      .btn-ghost {
+        border: 1px solid rgba(13, 59, 102, 0.3);
+        background-color: white;
+      }
+      .btn-ghost:hover {
+        background-color: #faf0ca;
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen bg-brand-cream text-brand-blue selection:bg-brand-blue selection:text-brand-cream"
+  >
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-brand-cream/70 border-b border-brand-blue/10"
+    >
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between py-4">
+          <a href="index.html" class="inline-flex items-center gap-2">
+            <img src="Assets/logo_aja_rounded_Rumah Digicraft.png" class="h-10 w-10 cursor-pointer" />
+            <span class="text-lg font-extrabold tracking-tight"
+              >Rumah Digicraft</span
+            >
+          </a>
+          <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+            <a href="portfolio.html" class="hover:opacity-80">Portfolio</a>
+            <a href="request-penawaran.html" class="hover:opacity-80"
+              >Request Penawaran</a
+            >
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Intro -->
+    <section class="py-10">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-3xl sm:text-4xl font-extrabold">Konsultasi Gratis</h1>
+        <p class="mt-3 text-brand-blue/80">
+          Yuk ngobrol santai soal kebutuhan digital Anda. Sesi 20–30 menit via
+          WhatsApp/Meet/Zoom. Zona waktu: <strong>WIB (UTC+7)</strong>.
+        </p>
+      </div>
+    </section>
+
+    <main class="pb-16">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-3">
+          <!-- Form -->
+          <div
+            class="lg:col-span-2 rounded-2xl border border-brand-blue/10 bg-white p-6 sm:p-8 shadow-smooth"
+          >
+            <form id="consultForm" class="grid gap-6">
+              <div class="grid gap-6 sm:grid-cols-2">
+                <div>
+                  <label class="label" for="nama">Nama Lengkap</label>
+                  <input
+                    id="nama"
+                    name="nama"
+                    type="text"
+                    class="input"
+                    placeholder="Nama Anda"
+                    required
+                  />
+                </div>
+                <div>
+                  <label class="label" for="email">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    class="input"
+                    placeholder="nama@perusahaan.com"
+                    required
+                  />
+                </div>
+                <div>
+                  <label class="label" for="telepon">No. WhatsApp</label>
+                  <input
+                    id="telepon"
+                    name="telepon"
+                    type="tel"
+                    class="input"
+                    placeholder="08xxxxxxxxxx"
+                    required
+                  />
+                </div>
+                <div>
+                  <label class="label" for="perusahaan"
+                    >Perusahaan (opsional)</label
+                  >
+                  <input
+                    id="perusahaan"
+                    name="perusahaan"
+                    type="text"
+                    class="input"
+                    placeholder="PT/UMKM"
+                  />
+                </div>
+              </div>
+
+              <div class="grid gap-6 sm:grid-cols-3">
+                <div>
+                  <label class="label" for="tanggal">Tanggal</label>
+                  <input
+                    id="tanggal"
+                    name="tanggal"
+                    type="date"
+                    class="input"
+                    required
+                  />
+                </div>
+                <div>
+                  <label class="label" for="waktu">Waktu (WIB)</label>
+                  <input
+                    id="waktu"
+                    name="waktu"
+                    type="time"
+                    class="input"
+                    required
+                  />
+                  <div class="mt-2 flex flex-wrap gap-2 text-xs">
+                    <button type="button" class="chip" data-slot="10:00">
+                      10:00
+                    </button>
+                    <button type="button" class="chip" data-slot="14:00">
+                      14:00
+                    </button>
+                    <button type="button" class="chip" data-slot="19:00">
+                      19:00
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <label class="label" for="media">Media</label>
+                  <select id="media" name="media" class="input" required>
+                    <option selected value="WhatsApp">WhatsApp Call</option>
+                    <option value="Google Meet">Google Meet</option>
+                    <option value="Zoom">Zoom</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="label" for="tujuan">Tujuan Konsultasi</label>
+                <select id="tujuan" name="tujuan" class="input" required>
+                  <option value="Pembuatan Website">Pembuatan Website</option>
+                  <option value="Aplikasi Android/iOS">
+                    Aplikasi Android/iOS
+                  </option>
+                  <option value="Desain UI/UX">Desain UI/UX</option>
+                  <option selected value="Diskusi Umum">Diskusi Umum</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="label" for="ringkasan">Ringkasan Singkat</label>
+                <textarea
+                  id="ringkasan"
+                  name="ringkasan"
+                  rows="5"
+                  class="input"
+                  placeholder="Ceritakan tujuan, tantangan saat ini, atau pertanyaan yang ingin dibahas"
+                ></textarea>
+              </div>
+
+              <div
+                class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+              >
+                <p class="text-xs text-brand-blue/70">
+                  Dengan mengirimkan form, Anda setuju dihubungi oleh tim Rumah
+                  Digicraft.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                  <button type="button" id="btnWa" class="btn btn-ghost">
+                    Ajukan via WhatsApp
+                  </button>
+                  <button type="submit" class="btn btn-primary">
+                    Ajukan Jadwal
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <!-- Success state -->
+            <div
+              id="success"
+              class="mt-6 hidden rounded-xl border border-emerald-500/20 bg-emerald-50 p-4 text-emerald-700"
+            >
+              <div class="flex items-start gap-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 flex-none"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                <div>
+                  <p class="font-semibold">Permintaan konsultasi terkirim!</p>
+                  <p class="text-sm">
+                    Kami akan konfirmasi jadwal melalui WhatsApp/Email Anda.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar info -->
+          <aside
+            class="rounded-2xl border border-brand-blue/10 bg-white p-6 sm:p-8 shadow-smooth"
+          >
+            <h3 class="text-lg font-bold">Bagaimana prosesnya?</h3>
+            <ol
+              class="mt-3 list-decimal pl-5 text-sm text-brand-blue/85 space-y-2"
+            >
+              <li>Isi form di samping dengan waktu yang Anda inginkan.</li>
+              <li>Kami cek ketersediaan dan kirim konfirmasi.</li>
+              <li>Meeting 20–30 menit: kebutuhan, scope, dan langkah awal.</li>
+            </ol>
+            <div class="mt-4 grid gap-2 text-sm">
+              <div class="chip">Gratis • Tanpa komitmen</div>
+              <div class="chip">Fokus Startup & UMKM</div>
+              <div class="chip">Zona waktu WIB</div>
+            </div>
+
+            <div class="mt-6 border-t border-brand-blue/10 pt-6 text-sm">
+              <h4 class="font-semibold">
+                Atau pakai link meeting Anda sendiri
+              </h4>
+              <p class="mt-1 text-brand-blue/80">
+                Jika Anda sudah punya link Google Meet/Zoom, cantumkan di bagian
+                ringkasan. Kami akan mengikuti.
+              </p>
+            </div>
+
+            <div class="mt-6 border-t border-brand-blue/10 pt-6 text-sm">
+              <h4 class="font-semibold">Kontak cepat</h4>
+              <ul class="mt-2 space-y-1">
+                <li>
+                  Email:
+                  <a class="underline" href="mailto:ardevcreations@gmail.com"
+                    >ardevcreations@gmail.com</a
+                  >
+                </li>
+                <li>
+                  WhatsApp:<br>
+                  <a
+                    class="underline"
+                    href="https://wa.me/6285174246110"
+                    target="_blank"
+                    rel="noopener"
+                    >+62 851-7424-6110</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+
+        <!-- FAQ ringkas -->
+        <div class="mt-10 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-xl border border-brand-blue/10 bg-white p-4">
+            <h3 class="font-semibold">Jadwal tersedia kapan?</h3>
+            <p class="mt-1 text-sm text-brand-blue/80">
+              Senin–Jumat 10.00–19.00 WIB. Di luar jam itu bisa dijadwalkan bila
+              memungkinkan.
+            </p>
+          </div>
+          <div class="rounded-xl border border-brand-blue/10 bg-white p-4">
+            <h3 class="font-semibold">Apakah konsultasi berbayar?</h3>
+            <p class="mt-1 text-sm text-brand-blue/80">
+              Tidak. Konsultasi pertama gratis, tanpa komitmen.
+            </p>
+          </div>
+          <div class="rounded-xl border border-brand-blue/10 bg-white p-4">
+            <h3 class="font-semibold">Setelah konsultasi?</h3>
+            <p class="mt-1 text-sm text-brand-blue/80">
+              Kami kirim rangkuman & estimasi penawaran. Bila cocok, lanjut
+              kick‑off.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer mini -->
+    <footer class="border-t border-brand-blue/10 bg-white">
+      <div
+        class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+      >
+        <p class="text-xs">&copy; <span id="year"></span> Rumah Digicraft</p>
+        <nav class="text-xs flex items-center gap-4">
+          <a href="index.html" class="hover:underline">Beranda</a>
+          <a href="portfolio.html" class="hover:underline">Portfolio</a>
+          <a href="request-penawaran.html" class="hover:underline"
+            >Request Penawaran</a
+          >
+        </nav>
+      </div>
+    </footer>
+
+    <script>
+      // Tahun dinamis
+      const y = document.getElementById("year");
+      if (y) y.textContent = new Date().getFullYear();
+
+      // Default tanggal = besok
+      const tanggal = document.getElementById("tanggal");
+      if (tanggal) {
+        const d = new Date();
+        d.setDate(d.getDate() + 1);
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, "0");
+        const dd = String(d.getDate()).padStart(2, "0");
+        tanggal.value = `${yyyy}-${mm}-${dd}`;
+        tanggal.min = `${yyyy}-${mm}-${dd}`;
+      }
+
+      // Quick time slots
+      const waktu = document.getElementById("waktu");
+      document.querySelectorAll("[data-slot]").forEach((b) => {
+        b.addEventListener("click", () => {
+          waktu.value = b.getAttribute("data-slot");
+        });
+      });
+
+      // WhatsApp compose
+      function clean(s) {
+        return String(s || "").trim();
+      }
+      const btnWa = document.getElementById("btnWa");
+      if (btnWa) {
+        btnWa.addEventListener("click", () => {
+          const nama = clean(document.getElementById("nama").value);
+          const email = clean(document.getElementById("email").value);
+          const tel = clean(document.getElementById("telepon").value);
+          const perusahaan = clean(document.getElementById("perusahaan").value);
+          const tgl = clean(document.getElementById("tanggal").value);
+          const jam = clean(document.getElementById("waktu").value);
+          const media = clean(document.getElementById("media").value);
+          const tujuan = clean(document.getElementById("tujuan").value);
+          const ringkasan = clean(document.getElementById("ringkasan").value);
+
+          // Ganti nomor WA di bawah
+          const target = "+6281234567890";
+          const msg = `Halo Rumah Digicraft,%0A%0ASaya ingin konsultasi gratis.%0A%0A— Nama: ${encodeURIComponent(
+            nama
+          )}%0A— Email: ${encodeURIComponent(
+            email
+          )}%0A— WhatsApp: ${encodeURIComponent(
+            tel
+          )}%0A— Perusahaan: ${encodeURIComponent(
+            perusahaan
+          )}%0A— Tanggal: ${encodeURIComponent(
+            tgl
+          )}%0A— Waktu (WIB): ${encodeURIComponent(
+            jam
+          )}%0A— Media: ${encodeURIComponent(
+            media
+          )}%0A— Tujuan: ${encodeURIComponent(
+            tujuan
+          )}%0A— Ringkasan: ${encodeURIComponent(
+            ringkasan
+          )}%0A%0ATerima kasih.`;
+          const url = `https://wa.me/${encodeURIComponent(
+            target.replace(/[^\d+]/g, "")
+          )}?text=${msg}`;
+          window.open(url, "_blank");
+        });
+      }
+
+      // Submit via mailto (fallback)
+      const form = document.getElementById("consultForm");
+      const success = document.getElementById("success");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const data = new FormData(form);
+          const ent = Object.fromEntries(data.entries());
+          const lines = [
+            "Permintaan Konsultasi Gratis",
+            "===========================",
+            `Nama: ${ent.nama}`,
+            `Email: ${ent.email}`,
+            `WhatsApp: ${ent.telepon}`,
+            `Perusahaan: ${ent.perusahaan || "-"}`,
+            `Tanggal: ${ent.tanggal}`,
+            `Waktu (WIB): ${ent.waktu}`,
+            `Media: ${ent.media}`,
+            `Tujuan: ${ent.tujuan}`,
+            "",
+            "Ringkasan:",
+            ent.ringkasan || "-",
+          ].join("\n");
+
+          const to = "halo@rumahdigicraft.com";
+          const subj = encodeURIComponent(
+            "Pengajuan Konsultasi Gratis — Rumah Digicraft"
+          );
+          const body = encodeURIComponent(lines);
+          window.location.href = `mailto:${to}?subject=${subj}&body=${body}`;
+
+          if (success) {
+            success.classList.remove("hidden");
+            success.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

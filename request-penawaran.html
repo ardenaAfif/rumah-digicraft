@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="Assets/logo_aja_custom_rumah_digicraft.png" />
+    <title>Request Penawaran — Rumah Digicraft</title>
+    <meta
+      name="description"
+      content="Form permintaan penawaran Rumah Digicraft untuk website, aplikasi Android/iOS, dan desain UI/UX. Cocok untuk Startup & UMKM."
+    />
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { brand: { blue: "#0D3B66", cream: "#FAF0CA" } },
+            boxShadow: { smooth: "0 10px 30px rgba(13,59,102,0.12)" },
+          },
+        },
+      };
+    </script>
+    <style>
+      html,
+      body {
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+          "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .req:after {
+        content: "*";
+        color: #b91c1c;
+        margin-left: 4px;
+      }
+      .input {
+        width: 100%;
+        border-radius: 0.5rem;
+        border: 1px solid rgba(13, 59, 102, 0.2);
+        background-color: white;
+        padding: 0.625rem 1rem;
+        outline: none;
+      }
+      .input:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(13, 59, 102, 0.2);
+      }
+      .label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #0d3b66;
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen bg-brand-cream text-brand-blue selection:bg-brand-blue selection:text-brand-cream"
+  >
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-brand-cream/70 border-b border-brand-blue/10"
+    >
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between py-4">
+          <a href="index.html" class="inline-flex items-center gap-2">
+            <img src="Assets/logo_aja_rounded_Rumah Digicraft.png" class="h-10 w-10 cursor-pointer" />
+            <span class="text-lg font-extrabold tracking-tight"
+              >Rumah Digicraft</span
+            >
+          </a>
+          <a
+            href="index.html"
+            class="hidden sm:inline-flex rounded-lg border border-brand-blue/30 px-3 py-2 text-sm font-semibold hover:bg-white"
+            >Kembali ke Beranda</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero / Intro -->
+    <section class="py-10">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-3xl sm:text-4xl font-extrabold">Request Penawaran</h1>
+        <p class="mt-3 text-brand-blue/80">
+          Isi formulir singkat ini. Tim kami akan menghubungi Anda dalam 1×24
+          jam kerja untuk konsultasi gratis dan estimasi biaya terbaik.
+        </p>
+      </div>
+    </section>
+
+    <!-- Form Card -->
+    <main class="pb-16">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div
+          class="rounded-2xl border border-brand-blue/10 bg-white p-6 sm:p-8 shadow-smooth"
+        >
+          <form id="rfqForm" class="grid gap-6">
+            <!-- Informasi Kontak -->
+            <div class="grid gap-6 sm:grid-cols-2">
+              <div>
+                <label class="label req" for="nama">Nama</label>
+                <input
+                  id="nama"
+                  name="nama"
+                  type="text"
+                  class="input"
+                  placeholder="Nama lengkap"
+                  required
+                />
+              </div>
+              <div>
+                <label class="label req" for="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  class="input"
+                  placeholder="nama@perusahaan.com"
+                  required
+                />
+              </div>
+              <div>
+                <label class="label req" for="telepon"
+                  >No. Telepon/WhatsApp</label
+                >
+                <input
+                  id="telepon"
+                  name="telepon"
+                  type="tel"
+                  class="input"
+                  placeholder="08xxxxxxxxxx"
+                  required
+                />
+              </div>
+              <div>
+                <label class="label" for="perusahaan"
+                  >Nama Perusahaan (opsional)</label
+                >
+                <input
+                  id="perusahaan"
+                  name="perusahaan"
+                  type="text"
+                  class="input"
+                  placeholder="PT/UMKM"
+                />
+              </div>
+            </div>
+
+            <!-- Detail Proyek -->
+            <div class="grid gap-6 sm:grid-cols-2">
+              <div>
+                <label class="label req" for="jenis">Jenis Layanan</label>
+                <select id="jenis" name="jenis" class="input" required>
+                  <option value="" disabled selected>Pilih layanan</option>
+                  <option>Jasa Pembuatan Website</option>
+                  <option>Jasa Pembuatan Aplikasi Android/iOS</option>
+                  <option>Jasa Desain UI/UX Web/Aplikasi</option>
+                </select>
+              </div>
+              <div>
+                <label class="label" for="timeline">Estimasi Timeline</label>
+                <select id="timeline" name="timeline" class="input">
+                  <option value="Belum pasti" selected>Belum pasti</option>
+                  <option>2–4 minggu</option>
+                  <option>1–2 bulan</option>
+                  <option>3+ bulan</option>
+                </select>
+              </div>
+              <div>
+                <label class="label" for="budget">Perkiraan Budget</label>
+                <select id="budget" name="budget" class="input">
+                  <option value="Rahasia" selected>
+                    Rahasia / butuh saran
+                  </option>
+                  <option>< 10 juta</option>
+                  <option>10–25 juta</option>
+                  <option>25–50 juta</option>
+                  <option>> 50 juta</option>
+                </select>
+              </div>
+              <div>
+                <label class="label" for="referensi"
+                  >URL Referensi (opsional)</label
+                >
+                <input
+                  id="referensi"
+                  name="referensi"
+                  type="url"
+                  class="input"
+                  placeholder="https://contoh.com"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="label req" for="deskripsi"
+                >Ringkasan Kebutuhan</label
+              >
+              <textarea
+                id="deskripsi"
+                name="deskripsi"
+                rows="5"
+                class="input"
+                placeholder="Ceritakan tujuan, fitur utama, target pengguna, dan hal penting lainnya"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Upload sederhana (opsional) -->
+            <div>
+              <label class="label" for="lampiran">Lampiran (opsional)</label>
+              <input
+                id="lampiran"
+                name="lampiran"
+                type="file"
+                class="w-full rounded-lg border border-brand-blue/20 bg-white file:mr-4 file:rounded-md file:border-0 file:bg-brand-blue file:px-4 file:py-2 file:text-sm file:font-semibold file:text-brand-cream hover:file:opacity-90"
+              />
+              <p class="mt-1 text-xs text-brand-blue/70">
+                Format yang didukung: PDF, DOCX, PNG, JPG (maks 10 MB — validasi
+                sisi klien).
+              </p>
+            </div>
+
+            <!-- Action buttons -->
+            <div
+              class="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between"
+            >
+              <p class="text-xs text-brand-blue/70">
+                Dengan mengirimkan formulir ini, Anda setuju dengan
+                <a href="#" class="underline">kebijakan privasi</a> kami.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-3">
+                <button
+                  type="button"
+                  id="btnWa"
+                  class="inline-flex items-center justify-center rounded-lg border border-brand-blue/30 bg-white px-5 py-3 font-semibold hover:bg-brand-cream"
+                >
+                  Kirim via WhatsApp
+                </button>
+                <button
+                  type="submit"
+                  class="inline-flex items-center justify-center rounded-lg bg-brand-blue px-5 py-3 font-semibold text-brand-cream shadow-smooth hover:opacity-95"
+                >
+                  Kirim Permintaan
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- State success -->
+          <div
+            id="success"
+            class="mt-6 hidden rounded-xl border border-emerald-500/20 bg-emerald-50 p-4 text-emerald-700"
+          >
+            <div class="flex items-start gap-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 flex-none"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              <div>
+                <p class="font-semibold">Permintaan terkirim!</p>
+                <p class="text-sm">
+                  Terima kasih. Kami akan menghubungi Anda melalui
+                  email/WhatsApp untuk langkah berikutnya.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ ringkas -->
+        <div class="mt-8 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-xl border border-brand-blue/10 bg-white p-4">
+            <h3 class="font-semibold">Berapa lama proses proposal?</h3>
+            <p class="mt-1 text-sm text-brand-blue/80">
+              Umumnya 1–3 hari kerja setelah konsultasi awal dan analisis
+              singkat.
+            </p>
+          </div>
+          <div class="rounded-xl border border-brand-blue/10 bg-white p-4">
+            <h3 class="font-semibold">Apakah ada DP?</h3>
+            <p class="mt-1 text-sm text-brand-blue/80">
+              Ya, biasanya 30–50% tergantung skala proyek dan kesepakatan.
+            </p>
+          </div>
+          <div class="rounded-xl border border-brand-blue/10 bg-white p-4">
+            <h3 class="font-semibold">Bisa kontrak bulanan?</h3>
+            <p class="mt-1 text-sm text-brand-blue/80">
+              Bisa. Kami sediakan paket retainer untuk maintenance &
+              pengembangan lanjutan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer mini -->
+    <footer class="border-t border-brand-blue/10 bg-white">
+      <div
+        class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+      >
+        <p class="text-xs">&copy; <span id="year"></span> Rumah Digicraft</p>
+        <nav class="text-xs flex items-center gap-4">
+          <a href="index.html" class="hover:underline">Beranda</a>
+          <a href="#" class="hover:underline">Kebijakan Privasi</a>
+          <a href="#" class="hover:underline">Syarat Layanan</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script>
+      // Helper: sanitasi sederhana
+      function clean(s) {
+        return String(s || "").trim();
+      }
+
+      // Tahun dinamis
+      const y = document.getElementById("year");
+      if (y) y.textContent = new Date().getFullYear();
+
+      // Validasi file (<=10MB)
+      const fileInput = document.getElementById("lampiran");
+      if (fileInput) {
+        fileInput.addEventListener("change", () => {
+          const f = fileInput.files && fileInput.files[0];
+          if (f && f.size > 10 * 1024 * 1024) {
+            alert("Ukuran file maksimal 10 MB.");
+            fileInput.value = "";
+          }
+        });
+      }
+
+      // WhatsApp compose
+      const btnWa = document.getElementById("btnWa");
+      if (btnWa) {
+        btnWa.addEventListener("click", () => {
+          const nama = clean(document.getElementById("nama").value);
+          const tel = clean(document.getElementById("telepon").value);
+          const email = clean(document.getElementById("email").value);
+          const perusahaan = clean(document.getElementById("perusahaan").value);
+          const jenis = clean(document.getElementById("jenis").value);
+          const timeline = clean(document.getElementById("timeline").value);
+          const budget = clean(document.getElementById("budget").value);
+          const referensi = clean(document.getElementById("referensi").value);
+          const deskripsi = clean(document.getElementById("deskripsi").value);
+
+          // Ganti nomor WA di bawah ini
+          const target = "+6281234567890";
+          const msg = `Halo Rumah Digicraft,%0A%0ASaya ingin request penawaran.%0A%0A— Nama: ${encodeURIComponent(
+            nama
+          )}%0A— Email: ${encodeURIComponent(
+            email
+          )}%0A— Telepon: ${encodeURIComponent(
+            tel
+          )}%0A— Perusahaan: ${encodeURIComponent(
+            perusahaan
+          )}%0A— Layanan: ${encodeURIComponent(
+            jenis
+          )}%0A— Timeline: ${encodeURIComponent(
+            timeline
+          )}%0A— Budget: ${encodeURIComponent(
+            budget
+          )}%0A— Referensi: ${encodeURIComponent(
+            referensi
+          )}%0A— Ringkasan: ${encodeURIComponent(
+            deskripsi
+          )}%0A%0ATerima kasih.`;
+          const url = `https://wa.me/${encodeURIComponent(
+            target.replace(/[^\d+]/g, "")
+          )}?text=${msg}`;
+          window.open(url, "_blank");
+        });
+      }
+
+      // Submit via mailto fallback + tampilkan success state
+      const form = document.getElementById("rfqForm");
+      const success = document.getElementById("success");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const data = new FormData(form);
+          const ent = Object.fromEntries(data.entries());
+          const lines = [
+            "Permintaan Penawaran Baru",
+            "==========================",
+            `Nama: ${ent.nama}`,
+            `Email: ${ent.email}`,
+            `Telepon: ${ent.telepon}`,
+            `Perusahaan: ${ent.perusahaan || "-"}`,
+            `Layanan: ${ent.jenis}`,
+            `Timeline: ${ent.timeline || "-"}`,
+            `Budget: ${ent.budget || "-"}`,
+            `Referensi: ${ent.referensi || "-"}`,
+            "",
+            "Ringkasan Kebutuhan:",
+            ent.deskripsi,
+          ].join("\n");
+
+          // Ganti alamat email tujuan di bawah ini
+          const to = "halo@rumahdigicraft.com";
+          const subj = encodeURIComponent(
+            "Request Penawaran Baru — Rumah Digicraft"
+          );
+          const body = encodeURIComponent(lines);
+          // Mail client
+          window.location.href = `mailto:${to}?subject=${subj}&body=${body}`;
+          // Tampilkan success state
+          if (success) {
+            success.classList.remove("hidden");
+            success.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+          // Reset sebagian field (kecuali kontak)
+          form.querySelector("#jenis").value = "";
+          form.querySelector("#timeline").value = "Belum pasti";
+          form.querySelector("#budget").value = "Rahasia";
+          form.querySelector("#referensi").value = "";
+          form.querySelector("#deskripsi").value = "";
+          if (fileInput) fileInput.value = "";
+        });
+      }
+    </script>
+  </body>
+</html>
