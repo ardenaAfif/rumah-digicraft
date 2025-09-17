@@ -359,19 +359,25 @@
           </div>
         </div>
       </div>
-
+      
       <div class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-brand-blue/10 pt-6 sm:flex-row">
         <p class="text-xs">&copy; <span id="year"></span> PT Rumah Digital Kreasi. Seluruh hak cipta dilindungi.</p>
         <nav class="text-xs flex items-center gap-4">
-          <a href="#home" class="hover:underline">Beranda</a>
-          <a href="#layanan" class="hover:underline">Layanan</a>
-          <a href="#kontak" class="hover:underline">Kontak</a>
+          <a href="#home" class="hover:underline font-bold">Beranda</a>
+          <a href="kebijakan-privasi" class="hover:underline">Kebijakan Privasi</a>
+          <a href="syarat-layanan" class="hover:underline">Syarat Layanan</a>
         </nav>
       </div>
     </div>
   </footer>
 
   <script>
+    // Tahun dinamis di footer
+    const yearElement = document.getElementById("year");
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear();
+    }
+
     // Mobile menu toggle
     const btn = document.getElementById('menuBtn');
     const nav = document.getElementById('mobileNav');
