@@ -7,12 +7,10 @@
   <title>Rumah Digicraft — Rumahnya Solusi Digital</title>
   <meta name="description" content="Rumah Digicraft adalah software house yang membantu startup & UMKM dengan website, aplikasi Android/iOS, dan jasa kelola sosial media berkualitas dengan harga terjangkau." />
 
-  <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -40,48 +38,90 @@
     html,body{ font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif; }
     /* Smooth scroll */
     html { scroll-behavior: smooth; }
+
+    /* CSS for animations */
+    .fade-in {
+      opacity: 0;
+      transition: opacity 0.6s ease-out;
+    }
+    .fade-in.is-visible {
+      opacity: 1;
+    }
+
+    .slide-in-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .slide-in-left.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .slide-in-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .slide-in-right.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .slide-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .slide-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Hapus kursor setelah animasi selesai */
+    .typing-effect-container.animation-done::after {
+      content: none;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    
+    @keyframes blink-caret {
+      from, to { opacity: 0 }
+      50% { opacity: 1; }
+    }
   </style>
 </head>
 <body class="bg-brand-cream text-brand-blue selection:bg-brand-blue selection:text-brand-cream">
-  <!-- Top Bar -->
   <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-brand-cream/70">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between py-4">
-        <!-- Logo -->
         <a href="#home" class="inline-flex items-center gap-2">
           <img src="Assets/logo_aja_rounded_Rumah Digicraft.png" class="h-10 w-10 cursor-pointer" />
           <span class="sr-only">Rumah Digicraft</span>
           <span aria-hidden="true" class="text-lg font-extrabold tracking-tight">Rumah Digicraft</span>
         </a>
-        <!-- Nav -->
         <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
           <a href="#keunggulan" class="hover:opacity-80">Keunggulan</a>
           <a href="#layanan" class="hover:opacity-80">Layanan</a>
-          <!-- <a href="portfolio" class="rounded-md px-3 py-2 hover:bg-white/60">Portfolio</a> -->
-          <!-- <a href="https://warung.rumahdigicraft.com/" class="rounded-md px-3 py-2 hover:bg-white/60">Warung</a> -->
-          <!-- <a href="#testimoni" class="hover:opacity-80">Testimoni</a> -->
           <a href="#workflow" class="hover:opacity-80">Workflow</a>
           <a href="#kontak" class="hover:opacity-80">Kontak</a>
         </nav>
-        <!-- CTA -->
         <div class="hidden sm:flex items-center gap-3">
           <a href="request-penawaran" class="rounded-lg bg-brand-blue px-4 py-2 text-brand-cream font-semibold shadow-smooth hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-brand-blue/30">Request Penawaran</a>
         </div>
-        <!-- Mobile menu button -->
         <button id="menuBtn" class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-brand-blue/20" aria-label="Toggle menu">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </div>
-      <!-- Mobile menu -->
       <div id="mobileNav" class="md:hidden hidden pb-4">
         <div class="flex flex-col gap-2 text-sm">
           <a href="#keunggulan" class="rounded-md px-3 py-2 hover:bg-white/60">Keunggulan</a>
           <a href="#layanan" class="rounded-md px-3 py-2 hover:bg-white/60">Layanan</a>
-          <!-- <a href="portfolio" class="rounded-md px-3 py-2 hover:bg-white/60">Portfolio</a> -->
-          <!-- <a href="https://warung.rumahdigicraft.com/" class="rounded-md px-3 py-2 hover:bg-white/60">Warung</a> -->
-          <!-- <a href="#testimoni" class="rounded-md px-3 py-2 hover:bg-white/60">Testimoni</a> -->
           <a href="#workflow" class="rounded-md px-3 py-2 hover:opacity-80">Workflow</a>
           <a href="#kontak" class="rounded-md px-3 py-2 hover:bg-white/60">Kontak</a>
           <a href="#kontak" class="mt-2 rounded-lg bg-brand-blue px-4 py-2 text-brand-cream font-semibold">Request Penawaran</a>
@@ -90,14 +130,14 @@
     </div>
   </header>
 
-  <!-- Hero -->
   <section id="home" class="relative overflow-hidden">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid gap-10 py-14 lg:grid-cols-2 lg:items-center lg:gap-16">
-        <!-- Copy -->
-        <div>
+        <div class="slide-in-left">
           <span class="inline-flex items-center gap-2 rounded-full border border-brand-blue/30 bg-white/60 px-3 py-1 text-xs font-semibold uppercase tracking-wider">Software House untuk Startup & UMKM</span>
-          <h1 class="mt-4 text-4xl font-extrabold leading-tight sm:text-5xl">Bangun produk digital berkualitas tanpa menguras kantong</h1>
+          <h1 id="hero-title" class="mt-4 text-4xl font-extrabold leading-tight sm:text-5xl mb-6 typing-effect-container">
+            <span class="typing-text">Bangun produk digital berkualitas tanpa menguras kantong</span>
+          </h1>
           <p class="mt-4 text-lg/8 text-brand-blue/90">Rumah Digicraft membantu Anda dari ide hingga rilis. <em>Rumahnya solusi digital</em> kami wujudkan website, aplikasi dan jasa kelola sosial media yang rapi, cepat dan ramah anggaran.</p>
           <ul class="mt-6 grid gap-2 text-sm">
             <li class="inline-flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="mt-1 h-5 w-5 flex-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Harga transparan & fleksibel sesuai kebutuhan</li>
@@ -109,11 +149,9 @@
             <a href="konsultasi" class="inline-flex items-center justify-center rounded-lg border border-brand-blue/30 bg-white/60 px-6 py-3 font-semibold hover:bg-white">Konsultasi Gratis</a>
           </div>
         </div>
-        <!-- Illustration -->
-        <div class="relative">
+        <div class="relative slide-in-right">
           <div class="absolute -top-10 -right-10 hidden h-56 w-56 rounded-full bg-brand-blue/10 blur-2xl lg:block"></div>
           <div class="relative mx-auto max-w-md rounded-2xl border border-brand-blue/10 bg-white p-5 shadow-smooth">
-            <!-- Placeholder App/Website mock -->
             <div class="rounded-xl border border-brand-blue/10 bg-brand-cream p-4">
               <div class="mb-3 h-6 w-24 rounded bg-brand-blue/20"></div>
               <div class="grid grid-cols-3 gap-3">
@@ -141,33 +179,28 @@
     </div>
   </section>
 
-  <!-- Keunggulan -->
   <section id="keunggulan" class="py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl text-center">
+      <div class="mx-auto max-w-2xl text-center slide-up">
         <h2 class="text-3xl font-extrabold">Kenapa memilih Rumah Digicraft?</h2>
         <p class="mt-3 text-brand-blue/80">Kami hadir untuk menyeimbangkan kualitas dan biaya agar bisnis rintisan dan UMKM bisa melaju dengan percaya diri.</p>
       </div>
       <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- Card 1 -->
-        <div class="rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-smooth">
+        <div class="slide-up rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-smooth">
           <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue text-brand-cream">
-            <!-- icon -->
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-2.21 0-4 1.343-4 3 0 2 4 7 4 7s4-5 4-7c0-1.657-1.79-3-4-3z"/></svg>
           </div>
           <h3 class="text-xl font-bold">Harga Terjangkau</h3>
           <p class="mt-2 text-sm text-brand-blue/80">Paket dan penawaran fleksibel. Bayar sesuai ruang lingkup, tanpa biaya tersembunyi.</p>
         </div>
-        <!-- Card 2 -->
-        <div class="rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-smooth">
+        <div class="slide-up rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-smooth">
           <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue text-brand-cream">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
           <h3 class="text-xl font-bold">Kualitas Tinggi</h3>
           <p class="mt-2 text-sm text-brand-blue/80">Clean code, desain rapi, dan praktik terbaik siap scale-up bersama bisnis Anda.</p>
         </div>
-        <!-- Card 3 -->
-        <div class="rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-smooth">
+        <div class="slide-up rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-smooth">
           <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue text-brand-cream">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M6 10h12M4 13h16M6 16h12"/></svg>
           </div>
@@ -178,16 +211,15 @@
     </div>
   </section>
 
-  <!-- Layanan -->
   <section id="layanan" class="border-y border-brand-blue/10 bg-white py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl text-center">
+      <div class="mx-auto max-w-2xl text-center slide-up">
         <h2 class="text-3xl font-extrabold">Layanan Kami</h2>
         <p class="mt-3 text-brand-blue/80">Tiga pilar layanan untuk kebutuhan digital Anda dari branding sampai produk siap pakai.</p>
       </div>
   
       <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="group rounded-2xl border border-brand-blue/10 bg-brand-cream p-6 shadow-smooth transition hover:-translate-y-1">
+        <div class="slide-up group rounded-2xl border border-brand-blue/10 bg-brand-cream p-6 shadow-smooth transition hover:-translate-y-1">
           <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue text-brand-cream">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4h18v12H3z"/><path d="M3 8h18M7 20h10" stroke-linecap="round"/></svg>
           </div>
@@ -199,7 +231,7 @@
             <li>Optimasi kecepatan & keamanan</li>
           </ul>
         </div>
-        <div class="group rounded-2xl border border-brand-blue/10 bg-brand-cream p-6 shadow-smooth transition hover:-translate-y-1">
+        <div class="slide-up group rounded-2xl border border-brand-blue/10 bg-brand-cream p-6 shadow-smooth transition hover:-translate-y-1">
           <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue text-brand-cream">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
           </div>
@@ -211,7 +243,7 @@
             <li>Publikasi ke Play Store/App Store</li>
           </ul>
         </div>
-        <div class="group rounded-2xl border border-brand-blue/10 bg-brand-cream p-6 shadow-smooth transition hover:-translate-y-1">
+        <div class="slide-up group rounded-2xl border border-brand-blue/10 bg-brand-cream p-6 shadow-smooth transition hover:-translate-y-1">
           <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue text-brand-cream">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M9 12a3 3 0 110-6 3 3 0 010 6zm0 0l-3 3v3h6v-3l-3-3z"/></svg>
           </div>
@@ -227,34 +259,33 @@
     </div>
   </section>
 
-  <!-- Workflow -->
   <section id="workflow" class="py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl text-center">
+      <div class="mx-auto max-w-2xl text-center slide-up">
         <h2 class="text-3xl font-extrabold">Bagaimana Kami Bekerja</h2>
         <p class="mt-3 text-brand-blue/80">Kami mengikuti alur kerja yang terstruktur untuk memastikan proyek digital Anda berjalan lancar dari awal hingga akhir.</p>
       </div>
   
       <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="relative rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-smooth">
+        <div class="relative rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-smooth slide-up">
           <div class="absolute -top-4 -left-4 inline-flex h-10 w-10 items-center justify-center rounded-full border-4 border-brand-cream bg-brand-blue font-extrabold text-lg text-brand-cream">1</div>
           <h3 class="mt-2 text-xl font-bold">Konsultasi & Perencanaan</h3>
           <p class="mt-2 text-sm text-brand-blue/80">Diskusikan ide dan kebutuhan Anda. Kami akan menganalisis, merencanakan ruang lingkup, dan menyusun strategi terbaik.</p>
         </div>
         
-        <div class="relative rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-smooth">
+        <div class="relative rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-smooth slide-up">
           <div class="absolute -top-4 -left-4 inline-flex h-10 w-10 items-center justify-center rounded-full border-4 border-brand-cream bg-brand-blue font-extrabold text-lg text-brand-cream">2</div>
           <h3 class="mt-2 text-xl font-bold">Pengembangan & Desain</h3>
           <p class="mt-2 text-sm text-brand-blue/80">Tim kami akan mulai merancang, mengembangkan, atau membuat konten sesuai rencana yang telah disepakati.</p>
         </div>
   
-        <div class="relative rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-smooth">
+        <div class="relative rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-smooth slide-up">
           <div class="absolute -top-4 -left-4 inline-flex h-10 w-10 items-center justify-center rounded-full border-4 border-brand-cream bg-brand-blue font-extrabold text-lg text-brand-cream">3</div>
           <h3 class="mt-2 text-xl font-bold">Uji Coba & Review</h3>
           <p class="mt-2 text-sm text-brand-blue/80">Produk atau konten Anda akan diuji secara menyeluruh. Kami akan memastikan semuanya berjalan sempurna sebelum diluncurkan.</p>
         </div>
   
-        <div class="relative rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-smooth">
+        <div class="relative rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-smooth slide-up">
           <div class="absolute -top-4 -left-4 inline-flex h-10 w-10 items-center justify-center rounded-full border-4 border-brand-cream bg-brand-blue font-extrabold text-lg text-brand-cream">4</div>
           <h3 class="mt-2 text-xl font-bold">Peluncuran & Dukungan</h3>
           <p class="mt-2 text-sm text-brand-blue/80">Setelah disetujui, kami bantu proses rilis atau publikasi. Tim support kami siap sedia untuk bantuan teknis setelahnya.</p>
@@ -263,51 +294,6 @@
     </div>
   </section>
 
-  <!-- Testimoni -->
-  <!-- <section id="testimoni" class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl text-center">
-        <h2 class="text-3xl font-extrabold">Apa kata klien kami</h2>
-      </div>
-
-      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <figure class="rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-smooth">
-          <blockquote class="text-sm text-brand-blue/90">“Tim Rumah Digicraft sigap dan komunikatif. Landing page kami selesai cepat dan konversi meningkat nyata.”</blockquote>
-          <figcaption class="mt-4 flex items-center gap-3">
-            <div class="h-10 w-10 rounded-full bg-brand-blue/20"></div>
-            <div>
-              <div class="font-semibold">Rizky Pratama</div>
-              <div class="text-xs text-brand-blue/70">Founder, Kopi Nusantara</div>
-            </div>
-          </figcaption>
-        </figure>
-
-        <figure class="rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-smooth">
-          <blockquote class="text-sm text-brand-blue/90">“Aplikasi internal penjualan kami jadi jauh lebih mudah dipakai. Support pasca rilisnya juga rapi.”</blockquote>
-          <figcaption class="mt-4 flex items-center gap-3">
-            <div class="h-10 w-10 rounded-full bg-brand-blue/20"></div>
-            <div>
-              <div class="font-semibold">Dewi Lestari</div>
-              <div class="text-xs text-brand-blue/70">COO, Makmur Jaya</div>
-            </div>
-          </figcaption>
-        </figure>
-
-        <figure class="rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-smooth">
-          <blockquote class="text-sm text-brand-blue/90">“Jasa kelola sosial media kami jauh lebih efektif dari tim internal. Hasilnya terasa nyata.”</blockquote>
-          <figcaption class="mt-4 flex items-center gap-3">
-            <div class="h-10 w-10 rounded-full bg-brand-blue/20"></div>
-            <div>
-              <div class="font-semibold">Aditya Putra</div>
-              <div class="text-xs text-brand-blue/70">Product Lead, RintisPOS</div>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section> -->
-
-  <!-- CTA Akhir -->
   <section class="relative isolate overflow-hidden py-16">
     <div class="absolute inset-0 -z-10 bg-brand-blue"></div>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -317,7 +303,7 @@
             <h3 class="text-2xl font-extrabold leading-snug">Siap memulai? Wujudkan ide Anda bersama Rumah Digicraft.</h3>
             <p class="mt-2 text-brand-cream/90">Kirim brief singkat atau jadwalkan konsultasi gratis. Kami bantu susun solusi yang pas untuk bisnis Anda.</p>
           </div>
-          <div class="flex items-center gap-3 lg:justify-end">
+          <div class="flex flex-col gap-3 lg:justify-end lg:flex-row">
             <a href="request-penawaran" class="inline-flex items-center justify-center rounded-lg bg-brand-cream px-5 py-3 font-semibold text-brand-blue shadow hover:opacity-90">Request Penawaran</a>
             <a href="konsultasi" class="inline-flex items-center justify-center rounded-lg border border-brand-cream/40 px-5 py-3 font-semibold text-brand-cream hover:bg-white/10">Konsultasi Gratis</a>
           </div>
@@ -326,7 +312,6 @@
     </div>
   </section>
 
-  <!-- Kontak / Footer -->
   <footer id="kontak" class="border-t border-brand-blue/10 bg-white">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
       <div class="grid gap-8 md:grid-cols-3">
@@ -351,8 +336,6 @@
           <h4 class="font-bold">Media Sosial</h4>
           <div class="mt-3 flex items-center gap-3">
             <a href="https://www.instagram.com/rumah.digicraft/" target="_blank" aria-label="Instagram" class="rounded-lg p-2 ring-1 ring-brand-blue/15 hover:bg-brand-cream"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
-            <!-- <a href="#" aria-label="LinkedIn" class="rounded-lg p-2 ring-1 ring-brand-blue/15 hover:bg-brand-cream"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0zM8 8h4.8v2.2h.1c.7-1.2 2.4-2.5 4.9-2.5 5.2 0 6.2 3.4 6.2 7.9V24h-5V16.1c0-1.9 0-4.4-2.7-4.4s-3.1 2.1-3.1 4.3V24H8V8z"/></svg></a>
-            <a href="#" aria-label="WhatsApp" class="rounded-lg p-2 ring-1 ring-brand-blue/15 hover:bg-brand-cream"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4.5A9.5 9.5 0 0 0 4.1 18.1L3 21l3-1.1A9.5 9.5 0 1 0 20 4.5zm-8.5 2a7.5 7.5 0 0 1 6.4 11.6l-.4.6-1.9-.5c-1.1.3-2.2.1-3.2-.3-2.6-1.1-4.7-3.2-5.8-5.8-.4-1-.6-2.1-.3-3.2l-.5-1.9.6-.4A7.5 7.5 0 0 1 11.5 6.5z"/></svg></a> -->
           </div>
         </div>
       </div>
@@ -419,7 +402,44 @@
           });
         });
       }
+      
+      // Menghapus kursor setelah animasi ketik selesai
+      const titleElement = document.querySelector('.typing-effect-container');
+      const titleSpan = document.querySelector('.typing-text');
+      
+      if (titleElement && titleSpan) {
+          // Menunggu durasi animasi selesai (3s)
+          titleSpan.addEventListener('animationend', () => {
+              titleElement.classList.add('animation-done');
+          });
+      }
+
     });
+
+    // Intersection Observer untuk animasi on-scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        } else {
+          entry.target.classList.remove('is-visible');
+        }
+      });
+    }, {
+      threshold: 0.1 // Animasi akan dipicu saat 10% elemen terlihat
+    });
+
+    // Terapkan observer ke semua elemen yang dianimasikan
+    document.querySelectorAll('.slide-up, .slide-in-left, .slide-in-right, .fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Terapkan animasi untuk hero section saat halaman dimuat
+    const heroElements = document.querySelectorAll('#home .slide-in-left, #home .slide-in-right');
+    heroElements.forEach(el => {
+        el.classList.add('is-visible');
+    });
+
   </script>
 </body>
 </html>
