@@ -55,6 +55,10 @@
         outline: none;
         box-shadow: 0 0 0 2px rgba(13, 59, 102, 0.2);
       }
+      .input:disabled {
+        background-color: #f3f4f6;
+        cursor: not-allowed;
+      }
       .label {
         font-size: 0.875rem;
         font-weight: 500;
@@ -152,7 +156,7 @@
             </div>
 
             <div class="grid gap-6 sm:grid-cols-2">
-              <div>
+              <div id="layananFieldContainer">
                 <label class="label req" for="jenis">Jenis Layanan</label>
                 <select id="jenis" name="jenis" class="input" required>
                   <option value="" disabled selected>Pilih layanan</option>
@@ -349,26 +353,43 @@
         const budgetFieldContainer = document.getElementById('budgetFieldContainer');
         const budgetLabel = document.getElementById('budgetLabel');
         const budgetSelect = document.getElementById('budget');
+        const layananFieldContainer = document.getElementById('layananFieldContainer'); // Kontainer Jenis Layanan
         
+        let packageValue = ''; // Variabel untuk menyimpan nilai paket yang sudah di-decode
+
         // 1. Pre-fill Jenis Layanan
         if (layananParam) {
-            // Hapus opsi default
-            jenisLayananSelect.querySelector('option[value=""]').remove();
-
-            // Pilih opsi yang sesuai
+            packageValue = decodeURIComponent(paketParam);
             const targetLayanan = decodeURIComponent(layananParam);
-            const targetOption = Array.from(jenisLayananSelect.options).find(opt => opt.value === targetLayanan);
+
+            // Ganti SELECT Layanan menjadi INPUT Text Readonly
+            jenisLayananSelect.remove();
+
+            const layananInput = document.createElement('input');
+            layananInput.setAttribute('type', 'text');
+            layananInput.setAttribute('id', 'jenis');
+            layananInput.setAttribute('name', 'jenis');
+            layananInput.setAttribute('class', 'input');
+            layananInput.setAttribute('value', targetLayanan);
+            layananInput.setAttribute('readonly', 'readonly');
+            layananInput.setAttribute('disabled', 'disabled'); // Agar tidak bisa diubah user
+            layananFieldContainer.appendChild(layananInput);
             
-            if (targetOption) {
-                targetOption.selected = true;
-            }
+            // Tambahkan input hidden agar nilainya tetap terkirim saat submit
+            const hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'jenis');
+            hiddenInput.setAttribute('value', targetLayanan);
+            layananFieldContainer.appendChild(hiddenInput);
+
+        } else {
+            // Jika tidak ada parameter layanan, pastikan SELECT Layanan tetap aktif
+            jenisLayananSelect.setAttribute('name', 'jenis');
         }
 
         // 2. Pre-fill/Ganti Kolom Budget menjadi Nama Paket
         if (paketParam) {
-            const packageValue = decodeURIComponent(paketParam);
-
-            // Ganti Label dan ID
+            // Ganti Label
             budgetLabel.textContent = 'Nama Paket';
             budgetLabel.classList.add('req'); // Jadikan wajib diisi
             
@@ -382,11 +403,11 @@
             packageInput.setAttribute('name', 'paket');
             packageInput.setAttribute('class', 'input');
             packageInput.setAttribute('value', packageValue);
-            packageInput.setAttribute('readonly', 'readonly'); // Penting: read-only
+            packageInput.setAttribute('readonly', 'readonly'); 
             
             budgetFieldContainer.appendChild(packageInput);
         } else {
-             // Jika tidak ada parameter paket, ganti nama field budget agar lebih jelas
+             // Jika tidak ada parameter paket, kembalikan nama field budget agar jelas
             budgetSelect.setAttribute('name', 'perkiraan_budget');
         }
 
@@ -398,7 +419,11 @@
                 const tel = clean(document.getElementById("telepon").value);
                 const email = clean(document.getElementById("email").value);
                 const perusahaan = clean(document.getElementById("perusahaan").value);
-                const jenis = clean(document.getElementById("jenis").value);
+                
+                // Ambil nilai Layanan dari input field atau select
+                const jenisLayananInput = document.querySelector('#jenis') || document.querySelector('input[name="jenis"][type="hidden"]');
+                const jenis = clean(jenisLayananInput.value);
+
                 const timeline = clean(document.getElementById("timeline").value);
                 
                 // Ambil nilai dari field Paket atau Budget
@@ -424,7 +449,12 @@
                 const data = new FormData(form);
                 const ent = Object.fromEntries(data.entries());
                 
-                const paketOrBudget = ent.paket || ent.budget || 'N/A'; // Ambil dari field yang ada
+                // Ambil nilai Layanan dari input field atau select
+                const jenisLayananInput = document.querySelector('#jenis') || document.querySelector('input[name="jenis"][type="hidden"]');
+                const jenis = clean(jenisLayananInput.value);
+
+                // Ambil nilai dari field Paket atau Budget
+                const paketOrBudget = ent.paket || ent.perkiraan_budget || 'N/A';
                 
                 const lines = [
                     "Permintaan Penawaran Baru",
@@ -433,7 +463,7 @@
                     `Email: ${ent.email}`,
                     `Telepon: ${ent.telepon}`,
                     `Perusahaan: ${ent.perusahaan || "-"}`,
-                    `Layanan: ${ent.jenis}`,
+                    `Layanan: ${jenis}`,
                     `Paket/Budget: ${paketOrBudget}`,
                     `Timeline: ${ent.timeline || "-"}`,
                     `Referensi: ${ent.referensi || "-"}`,
@@ -456,7 +486,6 @@
                 // Reset sebagian field
                 form.querySelector("#jenis").value = "";
                 form.querySelector("#timeline").value = "Belum pasti";
-                // Reset budget/paket field (khusus untuk tampilan)
                 const budgetFieldToReset = document.getElementById('budget') || document.getElementById('paket');
                 if (budgetFieldToReset) budgetFieldToReset.value = paketParam ? packageValue : 'Rahasia';
                 

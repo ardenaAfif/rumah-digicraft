@@ -1,6 +1,8 @@
 # Mengaktifkan mesin rewrite URL
 RewriteEngine On
 
+RewriteRule ^(layanan-website|layanan-aplikasi|layanan-sosmed)$ layanan/$1.html [L]
+
 # ----- Aturan untuk redirect index.html ke root (domain utama) -----
 # Jika permintaan adalah untuk file "index.html"
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
