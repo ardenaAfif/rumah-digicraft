@@ -170,11 +170,11 @@
             class="w-full rounded-lg border border-brand-blue/20 bg-white py-2.5 px-3 text-sm text-brand-blue/90 focus:outline-none focus:ring-2 focus:ring-brand-blue/30"
             onchange="if(this.value) location.href=this.value"
           >
-            <option value="layanan-website" selected>Jasa Pembuatan Website</option>
-            <option value="layanan-aplikasi">
+            <option value="layanan-website.html" selected>Jasa Pembuatan Website</option>
+            <option value="layanan-aplikasi.html">
               Jasa Pembuatan Aplikasi
             </option>
-            <option value="layanan-sosmed">
+            <option value="layanan-sosmed.html">
               Jasa Kelola Sosial Media
             </option>
           </select>
@@ -187,7 +187,7 @@
             aria-label="Navigasi Layanan"
           >
             <a
-              href="layanan-website"
+              href="layanan-website.html"
               aria-current="page"
               class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-brand-blue bg-brand-cream ring-1 ring-inset ring-brand-blue/30 shadow-sm transition whitespace-nowrap"
               role="tab"
@@ -195,14 +195,14 @@
               <span class="whitespace-nowrap">Jasa Pembuatan Website</span>
             </a>
             <a
-              href="layanan-aplikasi"
+              href="layanan-aplikasi.html"
               class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium text-brand-blue/80 hover:bg-brand-cream hover:text-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/30 transition whitespace-nowrap"
               role="tab"
             >
               <span class="whitespace-nowrap">Jasa Pembuatan Aplikasi</span>
             </a>
             <a
-              href="layanan-sosmed"
+              href="layanan-sosmed.html"
               class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium text-brand-blue/80 hover:bg-brand-cream hover:text-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/30 transition"
               role="tab"
             >
@@ -248,7 +248,7 @@
                     </ul>
                 </div>
                 
-                <a href="/#kontak" class="mt-6 w-full text-center py-3 px-4 rounded-lg font-semibold text-sm bg-brand-blue text-brand-cream hover:bg-brand-lightBlue transition-colors">
+                <a href="../request-penawaran.html?layanan=Jasa Pembuatan Website&paket=Paket Starter (750K-1.5 Juta)" class="mt-6 w-full text-center py-3 px-4 rounded-lg font-semibold text-sm bg-brand-blue text-brand-cream hover:bg-brand-lightBlue transition-colors">
                     Pilih Paket
                 </a>
             </div>
@@ -272,7 +272,7 @@
                     </ul>
                 </div>
 
-                <a href="/#kontak" class="mt-6 w-full text-center py-3 px-4 rounded-lg font-semibold text-sm bg-green-600 text-white hover:bg-green-700 transition-colors">
+                <a href="../request-penawaran.html?layanan=Jasa Pembuatan Website&paket=Paket Pro (2 Juta - 5 Juta)" class="mt-6 w-full text-center py-3 px-4 rounded-lg font-semibold text-sm bg-green-600 text-white hover:bg-green-700 transition-colors">
                     Pilih Paket
                 </a>
             </div>
@@ -296,7 +296,7 @@
                     </ul>
                 </div>
                 
-                <a href="../detail-pricelist-web" class="mt-6 w-full text-center py-3 px-4 rounded-lg font-semibold text-sm bg-brand-blue text-brand-cream hover:bg-brand-lightBlue transition-colors">
+                <a href="detail-pricelist-web.html" class="mt-6 w-full text-center py-3 px-4 rounded-lg font-semibold text-sm bg-brand-blue text-brand-cream hover:bg-brand-lightBlue transition-colors">
                     Lihat Detail
                 </a>
             </div>
@@ -335,10 +335,8 @@
       (function () {
         const select = document.getElementById("subnavSelect");
         if (!select) return;
-        // Logic to determine the current file path
         const path = location.pathname.split("/").pop() || "layanan-website"; 
         
-        // Match the value in the select dropdown
         for (const opt of select.options) {
           if (opt.value === path) {
             opt.selected = true;

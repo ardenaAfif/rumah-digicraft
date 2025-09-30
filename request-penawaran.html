@@ -10,7 +10,6 @@
       content="Form permintaan penawaran Rumah Digicraft untuk website, aplikasi Android/iOS, dan jasa kelola sosial media. Cocok untuk Startup & UMKM."
     />
 
-    <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,14 +17,13 @@
       rel="stylesheet"
     />
 
-    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: { brand: { blue: "#0D3B66", cream: "#FAF0CA" } },
-            boxShadow: { smooth: "0 10px 30px rgba(13,59,102,0.12)" },
+            boxShadow: { smooth: "0 10px 30px rgba(13, 59, 102, 0.12)" },
           },
         },
       };
@@ -67,7 +65,6 @@
   <body
     class="min-h-screen bg-brand-cream text-brand-blue selection:bg-brand-blue selection:text-brand-cream"
   >
-    <!-- Header -->
     <header
       class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-brand-cream/70 border-b border-brand-blue/10"
     >
@@ -88,7 +85,6 @@
       </div>
     </header>
 
-    <!-- Hero / Intro -->
     <section class="py-10">
       <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-3xl sm:text-4xl font-extrabold">Request Penawaran</h1>
@@ -99,14 +95,12 @@
       </div>
     </section>
 
-    <!-- Form Card -->
     <main class="pb-16">
       <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div
           class="rounded-2xl border border-brand-blue/10 bg-white p-6 sm:p-8 shadow-smooth"
         >
           <form id="rfqForm" class="grid gap-6">
-            <!-- Informasi Kontak -->
             <div class="grid gap-6 sm:grid-cols-2">
               <div>
                 <label class="label req" for="nama">Nama</label>
@@ -157,15 +151,14 @@
               </div>
             </div>
 
-            <!-- Detail Proyek -->
             <div class="grid gap-6 sm:grid-cols-2">
               <div>
                 <label class="label req" for="jenis">Jenis Layanan</label>
                 <select id="jenis" name="jenis" class="input" required>
                   <option value="" disabled selected>Pilih layanan</option>
-                  <option>Jasa Pembuatan Website</option>
-                  <option>Jasa Pembuatan Aplikasi Android/iOS</option>
-                  <option>Jasa Kelola Sosial Media</option>
+                  <option value="Jasa Pembuatan Website">Jasa Pembuatan Website</option>
+                  <option value="Jasa Pembuatan Aplikasi Android/iOS">Jasa Pembuatan Aplikasi Android/iOS</option>
+                  <option value="Jasa Kelola Sosial Media">Jasa Kelola Sosial Media</option>
                 </select>
               </div>
               <div>
@@ -177,8 +170,8 @@
                   <option>3+ bulan</option>
                 </select>
               </div>
-              <div>
-                <label class="label" for="budget">Perkiraan Budget</label>
+              <div id="budgetFieldContainer">
+                <label class="label" for="budget" id="budgetLabel">Perkiraan Budget</label>
                 <select id="budget" name="budget" class="input">
                   <option value="Rahasia" selected>
                     Rahasia / butuh saran
@@ -217,7 +210,6 @@
               ></textarea>
             </div>
 
-            <!-- Upload sederhana (opsional) -->
             <div>
               <label class="label" for="lampiran">Lampiran (opsional)</label>
               <input
@@ -232,7 +224,6 @@
               </p>
             </div>
 
-            <!-- Action buttons -->
             <div
               class="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between"
             >
@@ -258,7 +249,6 @@
             </div>
           </form>
 
-          <!-- State success -->
           <div
             id="success"
             class="mt-6 hidden rounded-xl border border-emerald-500/20 bg-emerald-50 p-4 text-emerald-700"
@@ -289,7 +279,6 @@
           </div>
         </div>
 
-        <!-- FAQ ringkas -->
         <div class="mt-8 grid gap-4 sm:grid-cols-3">
           <div class="rounded-xl border border-brand-blue/10 bg-white p-4">
             <h3 class="font-semibold">Berapa lama proses proposal?</h3>
@@ -315,7 +304,6 @@
       </div>
     </main>
 
-    <!-- Footer mini -->
     <footer class="border-t border-brand-blue/10 bg-white">
       <div
         class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
@@ -351,94 +339,135 @@
         });
       }
 
-      // WhatsApp compose
-      const btnWa = document.getElementById("btnWa");
-      if (btnWa) {
-        btnWa.addEventListener("click", () => {
-          const nama = clean(document.getElementById("nama").value);
-          const tel = clean(document.getElementById("telepon").value);
-          const email = clean(document.getElementById("email").value);
-          const perusahaan = clean(document.getElementById("perusahaan").value);
-          const jenis = clean(document.getElementById("jenis").value);
-          const timeline = clean(document.getElementById("timeline").value);
-          const budget = clean(document.getElementById("budget").value);
-          const referensi = clean(document.getElementById("referensi").value);
-          const deskripsi = clean(document.getElementById("deskripsi").value);
+      // --- Skrip Pre-filling dan Logic Utama ---
+      document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const layananParam = urlParams.get('layanan');
+        const paketParam = urlParams.get('paket');
+        
+        const jenisLayananSelect = document.getElementById('jenis');
+        const budgetFieldContainer = document.getElementById('budgetFieldContainer');
+        const budgetLabel = document.getElementById('budgetLabel');
+        const budgetSelect = document.getElementById('budget');
+        
+        // 1. Pre-fill Jenis Layanan
+        if (layananParam) {
+            // Hapus opsi default
+            jenisLayananSelect.querySelector('option[value=""]').remove();
 
-          // Ganti nomor WA di bawah ini
-          const target = "+6285117629616";
-          const msg = `Halo Rumah Digicraft,%0A%0ASaya ingin request penawaran.%0A%0A— Nama: ${encodeURIComponent(
-            nama
-          )}%0A— Email: ${encodeURIComponent(
-            email
-          )}%0A— Telepon: ${encodeURIComponent(
-            tel
-          )}%0A— Perusahaan: ${encodeURIComponent(
-            perusahaan
-          )}%0A— Layanan: ${encodeURIComponent(
-            jenis
-          )}%0A— Timeline: ${encodeURIComponent(
-            timeline
-          )}%0A— Budget: ${encodeURIComponent(
-            budget
-          )}%0A— Referensi: ${encodeURIComponent(
-            referensi
-          )}%0A— Ringkasan: ${encodeURIComponent(
-            deskripsi
-          )}%0A%0ATerima kasih.`;
-          const url = `https://wa.me/${encodeURIComponent(
-            target.replace(/[^\d+]/g, "")
-          )}?text=${msg}`;
-          window.open(url, "_blank");
-        });
-      }
+            // Pilih opsi yang sesuai
+            const targetLayanan = decodeURIComponent(layananParam);
+            const targetOption = Array.from(jenisLayananSelect.options).find(opt => opt.value === targetLayanan);
+            
+            if (targetOption) {
+                targetOption.selected = true;
+            }
+        }
 
-      // Submit via mailto fallback + tampilkan success state
-      const form = document.getElementById("rfqForm");
-      const success = document.getElementById("success");
-      if (form) {
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          const data = new FormData(form);
-          const ent = Object.fromEntries(data.entries());
-          const lines = [
-            "Permintaan Penawaran Baru",
-            "==========================",
-            `Nama: ${ent.nama}`,
-            `Email: ${ent.email}`,
-            `Telepon: ${ent.telepon}`,
-            `Perusahaan: ${ent.perusahaan || "-"}`,
-            `Layanan: ${ent.jenis}`,
-            `Timeline: ${ent.timeline || "-"}`,
-            `Budget: ${ent.budget || "-"}`,
-            `Referensi: ${ent.referensi || "-"}`,
-            "",
-            "Ringkasan Kebutuhan:",
-            ent.deskripsi,
-          ].join("\n");
+        // 2. Pre-fill/Ganti Kolom Budget menjadi Nama Paket
+        if (paketParam) {
+            const packageValue = decodeURIComponent(paketParam);
 
-          // Ganti alamat email tujuan di bawah ini
-          const to = "tim@rumahdigicraft.com";
-          const subj = encodeURIComponent(
-            "Request Penawaran Baru — Rumah Digicraft"
-          );
-          const body = encodeURIComponent(lines);
-          // Mail client
-          window.location.href = `mailto:${to}?subject=${subj}&body=${body}`;
-          // Tampilkan success state
-          if (success) {
-            success.classList.remove("hidden");
-            success.scrollIntoView({ behavior: "smooth", block: "center" });
-          }
-          // Reset sebagian field (kecuali kontak)
-          form.querySelector("#jenis").value = "";
-          form.querySelector("#timeline").value = "Belum pasti";
-          form.querySelector("#budget").value = "Rahasia";
-          form.querySelector("#referensi").value = "";
-          form.querySelector("#deskripsi").value = "";
-          if (fileInput) fileInput.value = "";
-        });
-      }
+            // Ganti Label dan ID
+            budgetLabel.textContent = 'Nama Paket';
+            budgetLabel.classList.add('req'); // Jadikan wajib diisi
+            
+            // Hapus Select lama
+            budgetSelect.remove();
+
+            // Tambahkan Input Text Readonly baru
+            const packageInput = document.createElement('input');
+            packageInput.setAttribute('type', 'text');
+            packageInput.setAttribute('id', 'paket');
+            packageInput.setAttribute('name', 'paket');
+            packageInput.setAttribute('class', 'input');
+            packageInput.setAttribute('value', packageValue);
+            packageInput.setAttribute('readonly', 'readonly'); // Penting: read-only
+            
+            budgetFieldContainer.appendChild(packageInput);
+        } else {
+             // Jika tidak ada parameter paket, ganti nama field budget agar lebih jelas
+            budgetSelect.setAttribute('name', 'perkiraan_budget');
+        }
+
+        // 3. Logic Submit WhatsApp (Mengambil data yang sudah diubah)
+        const btnWa = document.getElementById("btnWa");
+        if (btnWa) {
+            btnWa.addEventListener("click", () => {
+                const nama = clean(document.getElementById("nama").value);
+                const tel = clean(document.getElementById("telepon").value);
+                const email = clean(document.getElementById("email").value);
+                const perusahaan = clean(document.getElementById("perusahaan").value);
+                const jenis = clean(document.getElementById("jenis").value);
+                const timeline = clean(document.getElementById("timeline").value);
+                
+                // Ambil nilai dari field Paket atau Budget
+                const paketField = document.getElementById('paket') || document.getElementById('budget');
+                const paketOrBudget = clean(paketField.value);
+                
+                const referensi = clean(document.getElementById("referensi").value);
+                const deskripsi = clean(document.getElementById("deskripsi").value);
+
+                const target = "+6285117629616";
+                const msg = `Halo Rumah Digicraft,%0A%0ASaya ingin request penawaran.%0A%0A— Nama: ${encodeURIComponent(nama)}%0A— Email: ${encodeURIComponent(email)}%0A— Telepon: ${encodeURIComponent(tel)}%0A— Perusahaan: ${encodeURIComponent(perusahaan)}%0A— Layanan: ${encodeURIComponent(jenis)}%0A— Paket/Budget: ${encodeURIComponent(paketOrBudget)}%0A— Timeline: ${encodeURIComponent(timeline)}%0A— Referensi: ${encodeURIComponent(referensi)}%0A— Ringkasan: ${encodeURIComponent(deskripsi)}%0A%0ATerima kasih.`;
+                const url = `https://wa.me/${encodeURIComponent(target.replace(/[^\d+]/g, ""))}?text=${msg}`;
+                window.open(url, "_blank");
+            });
+        }
+
+        // 4. Logic Submit Form (Mailto) - Diperbarui untuk paket
+        const form = document.getElementById("rfqForm");
+        const success = document.getElementById("success");
+        if (form) {
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const data = new FormData(form);
+                const ent = Object.fromEntries(data.entries());
+                
+                const paketOrBudget = ent.paket || ent.budget || 'N/A'; // Ambil dari field yang ada
+                
+                const lines = [
+                    "Permintaan Penawaran Baru",
+                    "==========================",
+                    `Nama: ${ent.nama}`,
+                    `Email: ${ent.email}`,
+                    `Telepon: ${ent.telepon}`,
+                    `Perusahaan: ${ent.perusahaan || "-"}`,
+                    `Layanan: ${ent.jenis}`,
+                    `Paket/Budget: ${paketOrBudget}`,
+                    `Timeline: ${ent.timeline || "-"}`,
+                    `Referensi: ${ent.referensi || "-"}`,
+                    "",
+                    "Ringkasan Kebutuhan:",
+                    ent.deskripsi,
+                ].join("\n");
+
+                const to = "tim@rumahdigicraft.com";
+                const subj = encodeURIComponent("Request Penawaran Baru — Rumah Digicraft");
+                const body = encodeURIComponent(lines);
+                window.location.href = `mailto:${to}?subject=${subj}&body=${body}`;
+                
+                // Tampilkan success state (setelah mailto)
+                if (success) {
+                    success.classList.remove("hidden");
+                    success.scrollIntoView({ behavior: "smooth", block: "center" });
+                }
+                
+                // Reset sebagian field
+                form.querySelector("#jenis").value = "";
+                form.querySelector("#timeline").value = "Belum pasti";
+                // Reset budget/paket field (khusus untuk tampilan)
+                const budgetFieldToReset = document.getElementById('budget') || document.getElementById('paket');
+                if (budgetFieldToReset) budgetFieldToReset.value = paketParam ? packageValue : 'Rahasia';
+                
+                form.querySelector("#referensi").value = "";
+                form.querySelector("#deskripsi").value = "";
+                const fileInput = document.getElementById("lampiran");
+                if (fileInput) fileInput.value = "";
+            });
+        }
+      });
+      // --- Akhir Skrip ---
     </script>
   </body>
 </html>
