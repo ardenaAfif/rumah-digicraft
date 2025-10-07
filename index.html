@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/klienKami.css">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -106,6 +107,7 @@
         <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
           <a href="#keunggulan" class="hover:opacity-80">Keunggulan</a>
           <a href="#layanan" class="hover:opacity-80">Layanan</a>
+          <!-- <a href="portfolio" class="hover:opacity-80">Portfolio</a> -->
           <a href="#workflow" class="hover:opacity-80">Workflow</a>
           <a href="#kontak" class="hover:opacity-80">Kontak</a>
         </nav>
@@ -122,6 +124,7 @@
         <div class="flex flex-col gap-2 text-sm">
           <a href="#keunggulan" class="rounded-md px-3 py-2 hover:bg-white/60">Keunggulan</a>
           <a href="#layanan" class="rounded-md px-3 py-2 hover:bg-white/60">Layanan</a>
+          <!-- <a href="portfolio" class="rounded-md px-3 py-2 hover:opacity-80">Portfolio</a> -->
           <a href="#workflow" class="rounded-md px-3 py-2 hover:opacity-80">Workflow</a>
           <a href="#kontak" class="rounded-md px-3 py-2 hover:bg-white/60">Kontak</a>
           <a href="#kontak" class="mt-2 rounded-lg bg-brand-blue px-4 py-2 text-brand-cream font-semibold">Request Penawaran</a>
@@ -317,6 +320,34 @@
     </div>
   </section>
 
+  <section
+    id="klien-kami"
+    class="mt-12 bg-[#F7F9FC] p-8 sm:p-12 text-brand-blue shadow-smooth ring-1 ring-brand-blue/10"
+    aria-label="Klien Kami"
+  >
+    <div class="mb-6 sm:mb-8 flex flex-col items-center text-center gap-2">
+      <h3 class="text-2xl font-extrabold leading-snug">Klien Kami</h3>
+      <p class="mt-1 text-sm text-brand-blue/70">
+        Beberapa brand & perusahaan yang telah mempercayakan proyeknya.
+      </p>
+    </div>
+
+    <div class="relative overflow-hidden">
+      <div
+        class="pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-16 bg-gradient-to-r from-[#F7F9FC] to-transparent z-10"
+      ></div>
+      <div
+        class="pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-16 bg-gradient-to-l from-[#F7F9FC] to-transparent z-10"
+      ></div>
+
+      <ul
+        id="clients-track"
+        class="marquee flex items-center translate-z-0 will-change-transform"
+      >
+        </ul>
+    </div>
+  </section>
+
   <section class="relative isolate overflow-hidden py-16">
     <div class="absolute inset-0 -z-10 bg-brand-blue"></div>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -464,5 +495,6 @@
     });
 
   </script>
+  <script src="js/klienKami.js"></script>
 </body>
 </html>

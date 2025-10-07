@@ -3,22 +3,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/png" href="Assets/logo_aja_custom_rumah_digicraft.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="Assets/logo_aja_custom_rumah_digicraft.png"
+    />
     <title>Portfolio — Rumah Digicraft</title>
     <meta
       name="description"
       content="Kumpulan proyek Rumah Digicraft: Website, Aplikasi Android/iOS, dan Jasa Kelola Sosial Media. Fokus membantu Startup & UMKM."
     />
 
-    <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="css/klienKami.css">
 
-    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -112,14 +115,16 @@
   <body
     class="min-h-screen bg-brand-cream text-brand-blue selection:bg-brand-blue selection:text-brand-cream"
   >
-    <!-- Header -->
     <header
       class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-brand-cream/70 border-b border-brand-blue/10"
     >
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between py-4">
           <a href="/" class="inline-flex items-center gap-2">
-            <img src="Assets/logo_aja_rounded_Rumah Digicraft.png" class="h-10 w-10 cursor-pointer" />
+            <img
+              src="Assets/logo_aja_rounded_Rumah Digicraft.png"
+              class="h-10 w-10 cursor-pointer"
+            />
             <span class="text-lg font-extrabold tracking-tight"
               >Rumah Digicraft</span
             >
@@ -134,16 +139,14 @@
       </div>
     </header>
 
-    <!-- Hero / Intro -->
     <section class="py-10">
       <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-3xl sm:text-4xl font-extrabold">Portfolio</h1>
         <p class="mt-3 text-brand-blue/80">
-          Proyek yang kami bangun untuk klien Startup & UMKM. Tersusun
-          per layanan agar mudah dieksplor.
+          Proyek yang kami bangun untuk klien Startup & UMKM. Tersusun per
+          layanan agar mudah dieksplor.
         </p>
 
-        <!-- Tabs -->
         <div class="mt-6 flex flex-wrap items-center justify-center gap-2">
           <button class="tab tab-active" data-filter="all">Semua</button>
           <button class="tab" data-filter="website">Website</button>
@@ -153,483 +156,55 @@
       </div>
     </section>
 
-    <!-- Grid Portfolio -->
     <main class="pb-16">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div id="grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <!-- ===== WEBSITE (4 proyek) ===== -->
-          <article class="card group" data-cat="website">
-            <div
-              class="rounded-2xl border border-brand-blue/10 bg-white shadow-smooth overflow-hidden h-full flex flex-col"
-            >
-              <div class="relative aspect-[16/10] bg-brand-blue/10">
-                <div
-                  class="absolute inset-3 rounded-xl bg-white ring-1 ring-brand-blue/10"
-                ></div>
-                <span class="badge absolute left-3 top-3">Website</span>
-              </div>
-              <div class="p-5 flex flex-col gap-3 grow">
-                <h3 class="text-lg font-bold">Kopi Nusantara — Landing Page</h3>
-                <p class="text-sm text-brand-blue/80">
-                  Landing page promosi seasonal dengan form pesanan cepat,
-                  teroptimasi SEO.
-                </p>
-                <div
-                  class="mt-auto flex items-center gap-2 text-xs text-brand-blue/70"
-                >
-                  <span class="chip">Next.js</span
-                  ><span class="chip">Tailwind</span
-                  ><span class="chip">Vercel</span>
-                </div>
-                <div class="flex items-center gap-2 pt-2">
-                  <button class="btn btn-ghost text-sm" data-detail>
-                    Detail
-                  </button>
-                  <a
-                    class="btn btn-primary text-sm"
-                    href="request-penawaran"
-                    >Request Penawaran</a
-                  >
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card group" data-cat="website">
-            <div
-              class="rounded-2xl border border-brand-blue/10 bg-white shadow-smooth overflow-hidden h-full flex flex-col"
-            >
-              <div class="relative aspect-[16/10] bg-brand-blue/10">
-                <div
-                  class="absolute inset-3 rounded-xl bg-white ring-1 ring-brand-blue/10"
-                ></div>
-                <span class="badge absolute left-3 top-3">Website</span>
-              </div>
-              <div class="p-5 flex flex-col gap-3 grow">
-                <h3 class="text-lg font-bold">RintisPOS — Company Profile</h3>
-                <p class="text-sm text-brand-blue/80">
-                  Situs profil perusahaan dengan halaman produk, blog, dan
-                  dukungan multilingual.
-                </p>
-                <div
-                  class="mt-auto flex items-center gap-2 text-xs text-brand-blue/70"
-                >
-                  <span class="chip">Astro</span
-                  ><span class="chip">Alpine.js</span
-                  ><span class="chip">Netlify</span>
-                </div>
-                <div class="flex items-center gap-2 pt-2">
-                  <button class="btn btn-ghost text-sm" data-detail>
-                    Detail
-                  </button>
-                  <a
-                    class="btn btn-primary text-sm"
-                    href="request-penawaran"
-                    >Request Penawaran</a
-                  >
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card group" data-cat="website">
-            <div
-              class="rounded-2xl border border-brand-blue/10 bg-white shadow-smooth overflow-hidden h-full flex flex-col"
-            >
-              <div class="relative aspect-[16/10] bg-brand-blue/10">
-                <div
-                  class="absolute inset-3 rounded-xl bg-white ring-1 ring-brand-blue/10"
-                ></div>
-                <span class="badge absolute left-3 top-3">Website</span>
-              </div>
-              <div class="p-5 flex flex-col gap-3 grow">
-                <h3 class="text-lg font-bold">SembakoMudah — E‑Commerce</h3>
-                <p class="text-sm text-brand-blue/80">
-                  Toko online untuk UMKM bahan pokok, integrasi ongkir &
-                  pembayaran lokal.
-                </p>
-                <div
-                  class="mt-auto flex items-center gap-2 text-xs text-brand-blue/70"
-                >
-                  <span class="chip">Laravel</span
-                  ><span class="chip">MySQL</span
-                  ><span class="chip">Midtrans</span>
-                </div>
-                <div class="flex items-center gap-2 pt-2">
-                  <button class="btn btn-ghost text-sm" data-detail>
-                    Detail
-                  </button>
-                  <a
-                    class="btn btn-primary text-sm"
-                    href="request-penawaran"
-                    >Request Penawaran</a
-                  >
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card group" data-cat="website">
-            <div
-              class="rounded-2xl border border-brand-blue/10 bg-white shadow-smooth overflow-hidden h-full flex flex-col"
-            >
-              <div class="relative aspect-[16/10] bg-brand-blue/10">
-                <div
-                  class="absolute inset-3 rounded-xl bg-white ring-1 ring-brand-blue/10"
-                ></div>
-                <span class="badge absolute left-3 top-3">Website</span>
-              </div>
-              <div class="p-5 flex flex-col gap-3 grow">
-                <h3 class="text-lg font-bold">SehatBersama — Blog & Edu</h3>
-                <p class="text-sm text-brand-blue/80">
-                  Portal artikel kesehatan dengan editor WYSIWYG dan sistem
-                  kategori/tag.
-                </p>
-                <div
-                  class="mt-auto flex items-center gap-2 text-xs text-brand-blue/70"
-                >
-                  <span class="chip">WordPress</span
-                  ><span class="chip">Headless</span
-                  ><span class="chip">Cloudflare</span>
-                </div>
-                <div class="flex items-center gap-2 pt-2">
-                  <button class="btn btn-ghost text-sm" data-detail>
-                    Detail
-                  </button>
-                  <a
-                    class="btn btn-primary text-sm"
-                    href="request-penawaran"
-                    >Request Penawaran</a
-                  >
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- ===== MOBILE (4 proyek) ===== -->
-          <article class="card group" data-cat="mobile">
-            <div
-              class="rounded-2xl border border-brand-blue/10 bg-white shadow-smooth overflow-hidden h-full flex flex-col"
-            >
-              <div class="relative aspect-[16/10] bg-brand-blue/10">
-                <div
-                  class="absolute inset-5 rounded-2xl bg-white ring-1 ring-brand-blue/10"
-                ></div>
-                <span class="badge absolute left-3 top-3">Android/iOS</span>
-              </div>
-              <div class="p-5 flex flex-col gap-3 grow">
-                <h3 class="text-lg font-bold">StockMate — Inventory App</h3>
-                <p class="text-sm text-brand-blue/80">
-                  Aplikasi pencatatan stok & barcode scanning untuk gudang UMKM.
-                </p>
-                <div
-                  class="mt-auto flex items-center gap-2 text-xs text-brand-blue/70"
-                >
-                  <span class="chip">Flutter</span
-                  ><span class="chip">Supabase</span
-                  ><span class="chip">Firebase</span>
-                </div>
-                <div class="flex items-center gap-2 pt-2">
-                  <button class="btn btn-ghost text-sm" data-detail>
-                    Detail
-                  </button>
-                  <a
-                    class="btn btn-primary text-sm"
-                    href="request-penawaran"
-                    >Request Penawaran</a
-                  >
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card group" data-cat="mobile">
-            <div
-              class="rounded-2xl border border-brand-blue/10 bg-white shadow-smooth overflow-hidden h-full flex flex-col"
-            >
-              <div class="relative aspect-[16/10] bg-brand-blue/10">
-                <div
-                  class="absolute inset-5 rounded-2xl bg-white ring-1 ring-brand-blue/10"
-                ></div>
-                <span class="badge absolute left-3 top-3">Android/iOS</span>
-              </div>
-              <div class="p-5 flex flex-col gap-3 grow">
-                <h3 class="text-lg font-bold">GoLaundry — On‑Demand</h3>
-                <p class="text-sm text-brand-blue/80">
-                  Order, tracking, dan pembayaran laundry; notifikasi real‑time.
-                </p>
-                <div
-                  class="mt-auto flex items-center gap-2 text-xs text-brand-blue/70"
-                >
-                  <span class="chip">React Native</span
-                  ><span class="chip">Node.js</span
-                  ><span class="chip">OneSignal</span>
-                </div>
-                <div class="flex items-center gap-2 pt-2">
-                  <button class="btn btn-ghost text-sm" data-detail>
-                    Detail
-                  </button>
-                  <a
-                    class="btn btn-primary text-sm"
-                    href="request-penawaran"
-                    >Request Penawaran</a
-                  >
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card group" data-cat="mobile">
-            <div
-              class="rounded-2xl border border-brand-blue/10 bg-white shadow-smooth overflow-hidden h-full flex flex-col"
-            >
-              <div class="relative aspect-[16/10] bg-brand-blue/10">
-                <div
-                  class="absolute inset-5 rounded-2xl bg-white ring-1 ring-brand-blue/10"
-                ></div>
-                <span class="badge absolute left-3 top-3">Android/iOS</span>
-              </div>
-              <div class="p-5 flex flex-col gap-3 grow">
-                <h3 class="text-lg font-bold">EduKita — LMS Mobile</h3>
-                <p class="text-sm text-brand-blue/80">
-                  Materi, kuis, dan sertifikat untuk pelatihan internal
-                  karyawan.
-                </p>
-                <div
-                  class="mt-auto flex items-center gap-2 text-xs text-brand-blue/70"
-                >
-                  <span class="chip">Kotlin</span
-                  ><span class="chip">REST API</span
-                  ><span class="chip">JWT</span>
-                </div>
-                <div class="flex items-center gap-2 pt-2">
-                  <button class="btn btn-ghost text-sm" data-detail>
-                    Detail
-                  </button>
-                  <a
-                    class="btn btn-primary text-sm"
-                    href="request-penawaran"
-                    >Request Penawaran</a
-                  >
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card group" data-cat="mobile">
-            <div
-              class="rounded-2xl border border-brand-blue/10 bg-white shadow-smooth overflow-hidden h-full flex flex-col"
-            >
-              <div class="relative aspect-[16/10] bg-brand-blue/10">
-                <div
-                  class="absolute inset-5 rounded-2xl bg-white ring-1 ring-brand-blue/10"
-                ></div>
-                <span class="badge absolute left-3 top-3">Android/iOS</span>
-              </div>
-              <div class="p-5 flex flex-col gap-3 grow">
-                <h3 class="text-lg font-bold">FreshBox — Grocery</h3>
-                <p class="text-sm text-brand-blue/80">
-                  Marketplace bahan segar dengan fitur keranjang berlangganan.
-                </p>
-                <div
-                  class="mt-auto flex items-center gap-2 text-xs text-brand-blue/70"
-                >
-                  <span class="chip">Flutter</span
-                  ><span class="chip">Stripe/Midtrans</span
-                  ><span class="chip">GraphQL</span>
-                </div>
-                <div class="flex items-center gap-2 pt-2">
-                  <button class="btn btn-ghost text-sm" data-detail>
-                    Detail
-                  </button>
-                  <a
-                    class="btn btn-primary text-sm"
-                    href="request-penawaran"
-                    >Request Penawaran</a
-                  >
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- ===== Kelola Sosial Media (4 proyek) ===== -->
-          <article class="card group" data-cat="uiux">
-            <div
-              class="rounded-2xl border border-brand-blue/10 bg-white shadow-smooth overflow-hidden h-full flex flex-col"
-            >
-              <div class="relative aspect-[16/10] bg-brand-blue/10">
-                <div
-                  class="absolute inset-3 rounded-xl bg-white ring-1 ring-brand-blue/10"
-                ></div>
-                <span class="badge absolute left-3 top-3">Kelola Sosial Media</span>
-              </div>
-              <div class="p-5 flex flex-col gap-3 grow">
-                <h3 class="text-lg font-bold">Fina — Dashboard Keuangan</h3>
-                <p class="text-sm text-brand-blue/80">
-                  Desain analitik arus kas & P/L dengan komponen tabel besar
-                  ramah mobile.
-                </p>
-                <div
-                  class="mt-auto flex items-center gap-2 text-xs text-brand-blue/70"
-                >
-                  <span class="chip">Figma</span
-                  ><span class="chip">Design System</span
-                  ><span class="chip">Auto‑layout</span>
-                </div>
-                <div class="flex items-center gap-2 pt-2">
-                  <button class="btn btn-ghost text-sm" data-detail>
-                    Detail
-                  </button>
-                  <a
-                    class="btn btn-primary text-sm"
-                    href="request-penawaran"
-                    >Request Penawaran</a
-                  >
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card group" data-cat="uiux">
-            <div
-              class="rounded-2xl border border-brand-blue/10 bg-white shadow-smooth overflow-hidden h-full flex flex-col"
-            >
-              <div class="relative aspect-[16/10] bg-brand-blue/10">
-                <div
-                  class="absolute inset-3 rounded-xl bg-white ring-1 ring-brand-blue/10"
-                ></div>
-                <span class="badge absolute left-3 top-3">Kelola Sosial Media</span>
-              </div>
-              <div class="p-5 flex flex-col gap-3 grow">
-                <h3 class="text-lg font-bold">MedLink — Telehealth Flow</h3>
-                <p class="text-sm text-brand-blue/80">
-                  User flow konsultasi online dan resep elektronik dengan
-                  keamanan data.
-                </p>
-                <div
-                  class="mt-auto flex items-center gap-2 text-xs text-brand-blue/70"
-                >
-                  <span class="chip">Wireframe</span
-                  ><span class="chip">Prototype</span
-                  ><span class="chip">Usability</span>
-                </div>
-                <div class="flex items-center gap-2 pt-2">
-                  <button class="btn btn-ghost text-sm" data-detail>
-                    Detail
-                  </button>
-                  <a
-                    class="btn btn-primary text-sm"
-                    href="request-penawaran"
-                    >Request Penawaran</a
-                  >
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card group" data-cat="uiux">
-            <div
-              class="rounded-2xl border border-brand-blue/10 bg-white shadow-smooth overflow-hidden h-full flex flex-col"
-            >
-              <div class="relative aspect-[16/10] bg-brand-blue/10">
-                <div
-                  class="absolute inset-3 rounded-xl bg-white ring-1 ring-brand-blue/10"
-                ></div>
-                <span class="badge absolute left-3 top-3">Kelola Sosial Media</span>
-              </div>
-              <div class="p-5 flex flex-col gap-3 grow">
-                <h3 class="text-lg font-bold">EventGo — Ticketing UI</h3>
-                <p class="text-sm text-brand-blue/80">
-                  Desain UI mobile untuk pencarian acara, pembelian tiket, dan
-                  QR check‑in.
-                </p>
-                <div
-                  class="mt-auto flex items-center gap-2 text-xs text-brand-blue/70"
-                >
-                  <span class="chip">Component Library</span
-                  ><span class="chip">Tokens</span
-                  ><span class="chip">Handoff</span>
-                </div>
-                <div class="flex items-center gap-2 pt-2">
-                  <button class="btn btn-ghost text-sm" data-detail>
-                    Detail
-                  </button>
-                  <a
-                    class="btn btn-primary text-sm"
-                    href="request-penawaran"
-                    >Request Penawaran</a
-                  >
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card group" data-cat="uiux">
-            <div
-              class="rounded-2xl border border-brand-blue/10 bg-white shadow-smooth overflow-hidden h-full flex flex-col"
-            >
-              <div class="relative aspect-[16/10] bg-brand-blue/10">
-                <div
-                  class="absolute inset-3 rounded-xl bg-white ring-1 ring-brand-blue/10"
-                ></div>
-                <span class="badge absolute left-3 top-3">Kelola Sosial Media</span>
-              </div>
-              <div class="p-5 flex flex-col gap-3 grow">
-                <h3 class="text-lg font-bold">AgroLink — Marketplace Tani</h3>
-                <p class="text-sm text-brand-blue/80">
-                  Riset pengguna & prototipe untuk proses lelang dan logistik
-                  hasil panen.
-                </p>
-                <div
-                  class="mt-auto flex items-center gap-2 text-xs text-brand-blue/70"
-                >
-                  <span class="chip">Research</span
-                  ><span class="chip">Persona</span
-                  ><span class="chip">Prototype</span>
-                </div>
-                <div class="flex items-center gap-2 pt-2">
-                  <button class="btn btn-ghost text-sm" data-detail>
-                    Detail
-                  </button>
-                  <a
-                    class="btn btn-primary text-sm"
-                    href="request-penawaran"
-                    >Request Penawaran</a
-                  >
-                </div>
-              </div>
-            </div>
-          </article>
+          <p
+            id="loadingState"
+            class="col-span-full text-center py-10 text-brand-blue/70"
+          >
+            Memuat portfolio...
+          </p>
         </div>
 
-        <!-- CTA Section -->
         <section
-          class="mt-12 rounded-2xl bg-brand-blue p-8 sm:p-12 text-brand-cream shadow-smooth ring-1 ring-inset ring-white/10"
+          id="klien-kami"
+          class="mt-12 rounded-2xl bg-[#F7F9FC] p-8 sm:p-12 text-brand-blue shadow-smooth ring-1 ring-brand-blue/10"
+          aria-label="Klien Kami"
         >
-          <div class="grid gap-6 lg:grid-cols-3 lg:items-center">
-            <div class="lg:col-span-2">
-              <h3 class="text-2xl font-extrabold leading-snug">
-                Tertarik dengan salah satu proyek di atas?
-              </h3>
-              <p class="mt-2 text-brand-cream/90">
-                Kami bisa menyesuaikan fitur & anggaran sesuai kebutuhan bisnis
-                Anda.
+          <div class="mb-6 sm:mb-8 flex items-end justify-between gap-4">
+            <div>
+              <h3 class="text-2xl font-extrabold leading-snug">Klien Kami</h3>
+              <p class="mt-1 text-sm text-brand-blue/70">
+                Beberapa brand & perusahaan yang telah mempercayakan proyeknya.
               </p>
             </div>
-            <div class="flex items-center gap-3 lg:justify-end">
-              <a href="request-penawaran" class="btn btn-primary"
-                >Request Penawaran</a
-              >
-              <a href="/#kontak" class="btn btn-ghost"
-                >Konsultasi Gratis</a
-              >
-            </div>
+            <a
+              href="request-penawaran"
+              class="hidden sm:inline-flex btn btn-ghost text-sm"
+            >
+              Minta Penawaran
+            </a>
+          </div>
+
+          <div class="relative overflow-hidden">
+            <div
+              class="pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-16 bg-gradient-to-r from-[#F7F9FC] to-transparent z-10"
+            ></div>
+            <div
+              class="pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-16 bg-gradient-to-l from-[#F7F9FC] to-transparent z-10"
+            ></div>
+
+            <ul
+              id="clients-track"
+              class="marquee flex items-center translate-z-0 will-change-transform"
+            >
+              </ul>
           </div>
         </section>
       </div>
     </main>
 
-    <!-- Modal Detail -->
     <div id="modal" class="fixed inset-0 z-50 hidden">
       <div class="absolute inset-0 bg-black/40" data-close></div>
       <div
@@ -684,12 +259,13 @@
       </div>
     </div>
 
-    <!-- Footer mini -->
     <footer class="border-t border-brand-blue/10 bg-white">
       <div
         class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
       >
-        <p class="text-xs">&copy; <span id="year"></span> PT Rumah Digital Kreasi</p>
+        <p class="text-xs">
+          &copy; <span id="year"></span> PT Rumah Digital Kreasi
+        </p>
         <nav class="text-xs flex items-center gap-4">
           <a href="/" class="hover:underline">Beranda</a>
           <a href="request-penawaran" class="hover:underline"
@@ -699,60 +275,7 @@
       </div>
     </footer>
 
-    <script>
-      // Tahun dinamis
-      const y = document.getElementById("year");
-      if (y) y.textContent = new Date().getFullYear();
-
-      // Tabs filter
-      const tabs = Array.from(document.querySelectorAll(".tab"));
-      const cards = Array.from(document.querySelectorAll("#grid .card"));
-      function applyFilter(cat) {
-        cards.forEach((c) => {
-          const ok = cat === "all" || c.dataset.cat === cat;
-          c.classList.toggle("hidden", !ok);
-        });
-      }
-      tabs.forEach((t) =>
-        t.addEventListener("click", () => {
-          tabs.forEach((x) => x.classList.remove("tab-active"));
-          t.classList.add("tab-active");
-          applyFilter(t.dataset.filter);
-        })
-      );
-
-      // Modal detail (ambil info dari card)
-      const modal = document.getElementById("modal");
-      const mTitle = document.getElementById("mTitle");
-      const mBadge = document.getElementById("mBadge");
-      const mDesc = document.getElementById("mDesc");
-      const mTech = document.getElementById("mTech");
-      const mCta = document.getElementById("mCta");
-
-      document.querySelectorAll("[data-detail]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const card = btn.closest(".card");
-          const title = card.querySelector("h3").textContent.trim();
-          const badge = card.querySelector(".badge").textContent.trim();
-          const desc = card.querySelector("p").textContent.trim();
-          const chips = Array.from(card.querySelectorAll(".chip")).map((x) =>
-            x.textContent.trim()
-          );
-          mTitle.textContent = title;
-          mBadge.textContent = badge;
-          mDesc.textContent = desc;
-          mTech.innerHTML = chips
-            .map((t) => `<span class="chip">${t}</span>`)
-            .join("");
-          modal.classList.remove("hidden");
-        });
-      });
-      modal.addEventListener("click", (e) => {
-        if (e.target.hasAttribute("data-close")) modal.classList.add("hidden");
-      });
-      window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") modal.classList.add("hidden");
-      });
-    </script>
+    <script type="module" src="js/portfolio.js"></script>
+    <script type="module" src="js/klienKami.js"></script>
   </body>
 </html>
